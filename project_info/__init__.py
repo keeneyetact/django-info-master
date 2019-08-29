@@ -2,18 +2,21 @@ import os.path
 import json
 
 
-def get_project_info_dict(pip_config=None):
-    if pip_config is None:
+def get_project_info_dict(version_config=None):
+    if version_config is None:
         from django.conf import settings
 
-        pip_config = settings.PIP_CONFIG
+        version_config = settings.VERSION_CONFIG
 
-    if os.path.isfile(pip_config):
-        with open(pip_config) as pip_file:
-            return json.load(pip_file)
+
+    print(version_config)
+
+    if os.path.isfile(version_config):
+        with open(version_config) as f:
+            return json.load(f)
     else:
         return {}
 
 
-def get_version(pip_config=None):
-    return get_project_info_dict(pip_config).get('version')
+def get_version(version_config=None):
+    return get_project_info_dict(version_config).get('version')
