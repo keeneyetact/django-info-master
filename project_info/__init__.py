@@ -8,9 +8,6 @@ def get_project_info_dict(version_config=None):
 
         version_config = settings.VERSION_CONFIG
 
-
-    print(version_config)
-
     if os.path.isfile(version_config):
         with open(version_config) as f:
             return json.load(f)
